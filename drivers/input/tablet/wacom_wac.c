@@ -1675,8 +1675,8 @@ static int wacom_bpt_pen(struct wacom_wac *wacom)
 	input_report_key(input, BTN_STYLUS, btn1);
 	input_report_key(input, BTN_STYLUS2, btn2);
 
-	input_report_abs(input, ABS_X, x);
-	input_report_abs(input, ABS_Y, y);
+	input_report_abs(input, ABS_X, y);//x);
+	input_report_abs(input, ABS_Y, features->y_max - x);//y);
 	input_report_abs(input, ABS_PRESSURE, p);
 	input_report_abs(input, ABS_DISTANCE, d);
 
@@ -3304,10 +3304,10 @@ static const struct wacom_features wacom_features_0x368 =
 	  .type = DTH1152T, .touch_max = 10, .oVid = USB_VENDOR_ID_WACOM,
 	  .oPid = 0x35A }; /* Touch */
 static const struct wacom_features wacom_features_0x37A =
-	{ "Wacom One by Wacom S", WACOM_PKGLEN_BBPEN, 15200, 9500, 2047, 63,
+	{ "Wacom One by Wacom S", WACOM_PKGLEN_BBPEN, 9500, 15200, 2047, 63,
 	  BAMBOO_PT, WACOM_INTUOS_RES, WACOM_INTUOS_RES };
 static const struct wacom_features wacom_features_0x37B =
-	{ "Wacom One by Wacom M", WACOM_PKGLEN_BBPEN,  21600, 13500, 2047, 63,
+	{ "Wacom One by Wacom M", WACOM_PKGLEN_BBPEN, 13500, 21600, 2047, 63,
 	  BAMBOO_PT, WACOM_INTUOS_RES, WACOM_INTUOS_RES };
 static const struct wacom_features wacom_features_0x37C =
 	{ "Wacom Cintiq Pro 24", WACOM_PKGLEN_MSPRO, 105286, 59574, 8191, 63, /* Pen-only */
